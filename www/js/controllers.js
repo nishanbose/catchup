@@ -1,5 +1,24 @@
 angular.module('starter.controllers', ['starter.services']).controller('IntroCtrl', function($scope, $state, $localstorage, userService) {
-  if ($localstorage.get("device") === "web") {
+  // if ($localstorage.get("device") === "web") {
+  //   $scope.loggingIn = false;
+  //   $scope.login = function() {
+  //     if (!$scope.loggingIn) {
+  //       $scope.loggingIn = true;
+  //       userService.loginUser().then(function() {
+  //         $scope.loggingIn = false;
+  //         $state.go('tab.friends');
+  //       });
+  //     }
+  //   }
+  // } else {
+  //   $scope.login = function() {
+  //     console.log('nativeLogin')
+  //     userService.nativeLogin().then(function() {
+  //       $state.go('tab.friends');
+  //     });
+  //   }
+  // }
+
     $scope.loggingIn = false;
     $scope.login = function() {
       if (!$scope.loggingIn) {
@@ -10,14 +29,7 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
         });
       }
     }
-  } else {
-    $scope.login = function() {
-      console.log('nativeLogin')
-      userService.nativeLogin().then(function() {
-        $state.go('tab.friends');
-      });
-    }
-  }
+
 })
 
 .controller('FrndsCtrl', function($scope, $state) {
