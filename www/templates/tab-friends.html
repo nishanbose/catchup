@@ -1,0 +1,49 @@
+<ion-view class="friends" hide-nav-bar="true" view-title="Friends">
+
+  <ion-content scroll="false" padding="true" class="center-content padding">
+    <!-- <div ng-repeat="friend in friends" class="list card">
+          <img class="profile_pic" src="{{friend.images[0].source}}">
+          <p class="first_name">{{friend.tags.data[0].name}}</p>
+        </div>
+
+        <button class="button button-full"
+            ng-click="" >
+            Catch Up!
+        </button > -->
+
+    <ion-pane ng-controller="FrndsCtrl">
+      <td-cards>
+        <td-card id="td-card" ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)" on-partial-swipe="cardPartialSwipe(amt)">
+          <div class="friend-container">
+            <div class="image">
+              <!-- <div class="yes-text overlayBox"><div class="yesBox boxed" id="centerMe">Yes</div></div>
+                          <div class="no-text overlayBox"><div class="noBox boxed">No</div></div> -->
+              <!-- <img src="{{card.images[0].source}}"> -->
+              <!-- <img src="{{card.images[0].source}}"> -->
+              <div style="background-image: url({{card.images[0].source}});" class="main-image"> </div>
+            </div>
+            <!-- <div class="buttondesc"> -->
+              <!-- <div class="username"><i class="icon ion-android-contact"></i> {{card.tags.data[0].name}}</div> -->
+              <!-- <button ng-click="noCard()" class="button button-assertive friend-no">No</button> -->
+
+              <a class="icon ion-android-time friend-timer"></a>
+
+              <a ng-click="noCard()" class="button button-icon icon ion-android-cancel friend-no"></a>
+
+              <button ng-click="yesCard()" class="center button button-balanced friend-yes">Catch<br/>Up!</button>
+            <!-- </div> -->
+          </div>
+        </td-card>
+      </td-cards>
+    </ion-pane>
+
+  </ion-content>
+
+
+  <!-- <ion-footer-bar class="bar-positive" >
+        <button class="button button-clear button-full"
+            ng-click="login()" >
+            Login with Facebook
+        </button >
+    </ion-footer-bar > -->
+</ion-view>

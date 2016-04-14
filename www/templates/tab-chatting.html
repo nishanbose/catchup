@@ -1,0 +1,54 @@
+<html ng-app="starter">
+<ion-view view-title="Chat">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Ionic Template</title>
+
+    <link href="css/ionicchat.css" rel="stylesheet">
+    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  </head>
+
+  <body ng-controller="Messages">
+    <ion-pane class="messaging-view">
+    <ion-header-bar class="bar-calm">
+      <h1 class="title">Ioinc Chat</h1>
+    </ion-header-bar>
+
+    <ion-content class="content-stable"
+                 on-swipe-left="hideTime = false"
+                 on-swipe-right="hideTime = true">
+
+      <div ng-repeat="message in messages"
+           ng-class="{other: message.userId != myId}"
+           class="messages">
+
+        <div class="message" ng-class="{'slide-right': hideTime, '': !hideTime}">
+          <span class="msg" ng-click="confirmInvitation()">{{ message.text }}</span>
+        </div>
+
+        <div class="time" ng-class="{'slide-right': hideTime, '': !hideTime}">{{message.time}}</div>
+
+
+      </div>
+
+    </ion-content>
+
+    <ion-footer-bar class="bar-stable item-input-inset">
+      <a href="#/tab/chatting/schedule"><i class="ion-calendar" style="font-size:32px; padding-right:10px;" ></i></a>
+      <!-- <ion-item class="ion-calendar" style="font-size:32px; padding-right:10px;" href="#/tab/chatting/schedule"></ion-item> -->
+      <!-- <ion-item class="item" href="#/tab/chatting/schedule"><i class="ion-calendar" style="font-size:32px;"></i></ion-item> -->
+      <label class="item-input-wrapper" >
+        <!-- <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message"  /> -->
+        <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
+      </label>
+      <button class="button button-clear" ng-click="sendMessage()" >
+        Send
+      </button>
+    </ion-footer-bar>
+  </ion-pane>
+  </body>
+</ion-view>
+</html>

@@ -1,0 +1,41 @@
+<ion-view view-title="Water">
+ 
+<div class="bar bar-subheader bar-stable">
+  <label class="title subheaderfontandsize">From Prototype to Product/Market Fit</label>
+</div>
+
+
+  <ion-content class="has-subheader" scroll="false">
+  	
+    <div class="list">
+      <button class="item button-full allbuttons waterbuttonone" 
+           ng-click="setSelectedTopic('Create Prototypes');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Create Prototypes
+      </button>
+
+      <button class="item button-full allbuttons waterbuttontwo" 
+           ng-click="setSelectedTopic('Build a MVP');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Build a MVP
+      </button>
+
+      <button class="item button-full allbuttons waterbuttonthree" 
+           ng-click="setSelectedTopic('Find Early Adopters');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Find Early Adopters
+      </button>
+
+      <button class="item button-full allbuttons waterbuttonfour" 
+           ng-click="setSelectedTopic('Go to Market');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Go to Market
+      </button>
+    </div >
+  
+  </ion-content>
+</ion-view>

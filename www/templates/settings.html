@@ -1,0 +1,28 @@
+
+<ion-view view-title="Settings">
+
+
+
+  <ion-content class="" scroll="false">
+  
+    <div>         
+      <textarea name="text" 
+                class="feedback-input" 
+                placeholder="How can we help you?"
+                ng-enter="sendFeedback()"
+                ng-model="$parent.feedback"></textarea>
+      
+      <button class="button button-full button-positive icon-left ion-paper-airplane logoutbutton" ng-click="sendFeedback()">Send Feedback
+      </button >
+    </div>
+
+	<div class="logout">
+    	<button class="button button-full button-dark icon-left ion-log-out logoutbutton" ng-click="clearNavHistory();logout()">Logout</button>
+  	</div>
+
+  	<div class="deleteaccount">
+  		<button class="button button-full button-assertive icon-left ion-ios-trash deleteaccountbutton" ng-click="showConfirm()">Delete Account</button>
+  	</div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view view-title="Scedule">
+<body ng-controller="ScheduleCtrl">
+  <ion-content>
+    <!-- <div ng-repeat="item in split_items">
+      <div ng-class="row|($index%3==0)">
+        <ng-include class="col-25"></ng-include>
+      </div>
+    </div> -->
+
+    <div ng-repeat="items in split_items" class="row">
+        <div ng-repeat="item in items track by $index" class="col-25" ng-class="{active: isSelected(item.name)}">
+          <button class="button button-clear" ng-click="select(item.name)">{{item.value}}</button>
+        </div>
+    </div>
+
+    <!-- <div class="row" style="text-align:center;">
+      <div class="col col-15 schtable_topleft"></div>
+      <div class="col col-28 schtable_top"><span style="font-size:25px;">27</span><br>Fri</div>
+      <div class="col col-28 schtable_top"><span style="font-size:25px; color:blue;">28</span><br>Sat</div>
+      <div class="col col-28 schtable_top"><span style="font-size:25px; color:red;">29</span><br>Sun</div>
+    </div>
+
+    <div class="row">
+      <div class="col col-15 schtable_left">9AM</div>
+      <div class="col col-28 schtable" ng-class="{active: isSelected(this)}"><button class="button button-clear" ng-click="select(this)"></button></div>
+      <div class="col col-28 schtable"><button class="button button-clear"></button></div>
+      <div class="col col-28 schtable"><button class="button button-clear"></button></div>
+    </div>-->
+  </ion-content>
+
+  <!-- <ion-footer-bar><button class="button button-full button-positive" href="#/tab/chatting/schedule/place">Next</button></ion-footer-bar> -->
+  <ion-footer-bar>
+    <a href="#/tab/chatting"><i class=" ion-arrow-left-a" style="font-size:32px; padding-top:-10px; padding-left:12px;"></i></a>
+    <a href="#/tab/chatting/schedule/place"><i class=" ion-arrow-right-a" style="font-size:32px; padding-top:-10px; padding-left:290px;"></i></a>
+  </ion-footer-bar>
+</body>
+</ion-view>

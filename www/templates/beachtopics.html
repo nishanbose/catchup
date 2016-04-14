@@ -1,0 +1,41 @@
+
+<ion-view view-title="Beach">
+
+<div class="bar bar-subheader bar-stable">
+  <label class="title subheaderfontandsize">From Zero to Problem/Solution Fit</label>
+</div>
+
+
+  <ion-content class="has-subheader" scroll="false">
+  	
+    <div class="list">
+      <button class="item button-full allbuttons beachbuttonone" 
+           ng-click="setSelectedTopic('Before you Start');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Before you Start
+      </button>
+
+      <button class="item button-full allbuttons beachbuttontwo" 
+           ng-click="setSelectedTopic('State your Hypothesis');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">State your Hypothesis
+      </button>
+
+      <button class="item button-full allbuttons beachbuttonthree" 
+           ng-click="setSelectedTopic('Validate the Problem');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Validate the Problem
+      </button>
+
+      <button class="item button-full allbuttons beachbuttonfour" 
+           ng-click="setSelectedTopic('Validate the Solution');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Validate the Solution
+      </button>
+    </div >
+  </ion-content>
+</ion-view>

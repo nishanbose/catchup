@@ -1,0 +1,47 @@
+<ion-view view-title="Water">
+  
+ <div class="bar bar-subheader bar-stable">
+  <label class="title subheaderfontandsize">From Grow to Automatization </label>
+</div>
+ 
+
+  <ion-content class="has-subheader" scroll="false">
+
+    <div class="list">
+      <button class="item button-full allbuttons wavebuttonone" 
+           ng-click="setSelectedTopic('Hack your Growth');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Hack your Growth
+      </button>
+
+      <button class="item button-full allbuttons wavebuttontwo" 
+           ng-click="setSelectedTopic('Think outside the Box');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Think outside the Box
+      </button>
+
+      <button class="item button-full allbuttons wavebuttonthree" 
+           ng-click="setSelectedTopic('Love your Customer');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Love your Customer
+      </button>
+
+      <button class="item button-full allbuttons wavebuttonfour" 
+           ng-click="setSelectedTopic('Automate your Processes');
+                     clearNavHistory(); 
+                     loadBrowseFeed()" 
+           ui-sref="tab.browse">Automate your Processes
+      </button>
+    </div >
+  	
+  </ion-content>
+</ion-view>
+
+
+
+
+
+<!-- usersTopicChoice.choosenTopic='Systemation'  selectedTopic=''-->

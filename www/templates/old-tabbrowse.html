@@ -1,0 +1,67 @@
+<ion-view view-title="Browse">
+
+
+  <ion-content data-ng-init="loadFeed()" scroll="false">
+
+    <!-- Loading Indicator -->
+    <div class="loading alerts"
+         ng-if="loading" >
+      <ion-spinner icon="ripple" ></ion-spinner >
+      <p >Loading Content...</p >
+    </div >
+
+    <!-- No New Card message -->
+    <div class="alerts"
+         ng-show="!loading && cards.length == 0 && noSelectedTopic == false" >
+      <p >There are no new cards in this topic. You can select another topic or come back later to this topic.</p >
+    </div >
+
+
+    <!-- First time user message -->
+    <div class="alerts"
+         ng-show="noSelectedTopic == true" >
+      <p>You have to select Topic first!</p >
+    </div >
+
+    <!-- Cards -->
+ 	  <td-cards>
+      <td-card ng-repeat="card in cards | internalreverse track by $index"
+               on-destroy="cardDestroyed($index,card)"
+               on-swipe=""
+               on-Swipe-Right= "user.saveContent(card); updateCollectionTab()">
+          <div class="list card myCard">
+            <!-- Card Header-->
+            <div class="item topicDescription cardHeader">
+              <p>{{SelectedTopic}} {{card.id}}</p>
+            </div>
+
+            <div class="image"
+             ng-style="{'background-image': 'url('+card.image+')'}" >
+           </div >
+
+
+          <!-- Card Body-->
+          <div class="item item-body noBorder">
+            <img class="full-image" src="{{card.image}}">
+            <h3 class="cardTitle">{{card.title}}</h3>
+            <p>{{card.summary}}</p>
+          </div>
+
+          <!-- Card Footer-->
+          <div class="item tabs tabs-secondary tabs-icon-left cardFooter">
+             <a class="tab-item" ng-click="actionButton($index)" href="#">
+                 <i class="{{card.actionButtonIcon}}"></i>
+                 {{card.actionButtonText}} {{card.type}} ( {{card.additionalInfo}} )
+             </a>
+
+             <a class="tab-item" ng-click="share($index)" href="#">
+                <i class="icon ion-share"></i>
+                Share
+              </a>
+          </div>
+        </div>
+      </td-card>
+    </td-cards>
+
+  </ion-content>
+</ion-view>

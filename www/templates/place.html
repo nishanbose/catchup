@@ -1,0 +1,26 @@
+<ion-view view-title="Place">
+<body ng-controller="PlaceCtrl">
+  <ion-content>
+    <div class="list">
+      <div class="item item-input-inset"><label class="item-input-wrapper"><input type="text" placeholder="Enter Location"></label></div>
+      <div class="item" ng-click="currentLocation()"><i class="icon ion-navigate" style="padding-right: 5px;"></i>Use Current Location</div>
+      <div class="item item-divider">Chosen Places</div>
+      <div ng-repeat="item in items" class="item" ng-if="isSelectedPlace(item.name)">
+        <span class="item-thumbnail-right" href="#"><img src="{{item.image}}" style="width:55px; height:55px;">
+        <i class="{{item.class}}" style="padding-right: 5px;"></i><span ng-if="isSelectedPlace(item.name)">{{item.name}}</span>
+        <br><span ng-if="isSelectedPlace(item.name)" style="font-size:12px; color:#999999;">{{item.address}}</span></span></div>
+      <div class="item item-divider">Recommended</div>
+      <div ng-repeat="item in items" class="item" ng-click="selectplace(item.name)">
+        <span class="item-thumbnail-right" href="#"><img src="{{item.image}}" style="width:55px; height:55px;">
+        <i class="{{item.class}}" style="padding-right: 5px;"></i><span>{{item.name}}</span>
+        <br><span style="font-size:12px; color:#999999;">{{item.address}}</span></span></div>
+
+    </div>
+
+  </ion-content>
+  <ion-footer-bar>
+    <a href="#/tab/chatting/schedule"><i class=" ion-arrow-left-a" style="font-size:32px; padding-top:-10px; padding-left:12px;"></i></a>
+    <a href="#/tab/chatting"><i class=" ion-checkmark" style="font-size:32px; padding-top:-10px; padding-left:290px;" ng-click="sendInvitation()"></i></a>
+  </ion-footer-bar>
+</body>
+</ion-view>

@@ -1,0 +1,387 @@
+/* Empty. Add your own CSS if you like */
+
+/*////////// INTRO /////////////*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+
+.center-content{
+	/*background-color: #2196F3;*/
+	background-color: rgb(98, 203, 226);
+	color:white;
+	font-family: Open Sans;
+	font-size: 40px;
+	display:-webkit-flex;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-align:center;
+	-ms-flex-align:center;
+	align-items:center;
+	-webkit-align-items:center;
+	-webkit-box-pack:center;
+	-ms-flex-pack:center;
+	justify-content:center;
+	-webkit-justify-content:center;
+	-webkit-box-orient:vertical;
+	-webkit-box-direction:normal;
+	-ms-flex-direction:column;
+	flex-direction:column;
+	-webkit-flex-direction:column
+}
+
+/*.intro .logo{
+	height:60px;
+	width:60px;
+	margin-top:-50px;
+	margin-bottom:50px
+	}*/
+
+/*.intro .bar-footer{
+	background-color:#3b5998
+}*/
+
+.intro .bar-footer button{
+	margin:0
+}
+
+.intro img {
+	width: 40%;
+}
+
+.intro .small {
+	font-size: 30px;
+  margin: 20px 0 0;
+}
+
+/*/////////// Generel Settings ///////////////*/
+.alerts{
+	font-family: Open Sans;
+	font-size: 26px !important;
+	color: #426FC5 !important;
+	margin-top: 200px;
+	margin-left: 15px;
+	text-align: center !important;
+}
+.mainfont{
+	font-family: Open Sans;
+
+}
+.subheaderfontandsize{
+	font-family: Open Sans;
+	font-size: 20px !important;
+	font-weight: bold;
+}
+.navbackbuttons{
+	font-family: Open Sans;
+	font-size: 15px !important;
+}
+/*////////// TOPICS ////////////*/
+
+.infoText{
+	font-family: Open Sans;
+	font-size: 20px !important;
+	color: #426FC5 !important;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+
+/* First Level Buttons */
+.topicbuttons{
+	font-family: Open Sans;
+	color: white;
+	font-size: 30px;
+	height: 165px;
+	display:block;
+	border: none;
+}
+
+.beachbutton{
+	background-color: #f6774f;
+}
+.waterbutton{
+	background-color: #00897b;
+}
+.wavebutton{
+	background-color: #426FC5;
+}
+
+/* Second Level Buttons */
+
+.allbuttons{
+	font-family: Open Sans;
+	color: white;
+	height: 124px;
+	padding: 0;
+	display:block;
+	border: none;
+	font-size: 25px;
+}
+/**/
+.beachbuttonone{
+	background-color: #49a942;
+}
+.beachbuttontwo{
+	background-color: #003f87;
+}
+.beachbuttonthree{
+	background-color: #a6192e;
+}
+.beachbuttonfour{
+	background-color: #016773;
+}
+/**/
+.waterbuttonone{
+	background-color: #212a3e;
+}
+.waterbuttontwo{
+	background-color: #3098dc;
+}
+.waterbuttonthree{
+	background-color: #00539f;
+}
+.waterbuttonfour{
+	background-color: #338d11;
+}
+/**/
+.wavebuttonone{
+	background-color: #cf4646;
+}
+.wavebuttontwo{
+	background-color: #00af81;
+}
+.wavebuttonthree{
+	background-color: #0099ff;
+}
+.wavebuttonfour{
+	background-color: #9911aa;
+}
+
+
+
+/*////////// BROWSE ////////////*/
+
+/*.image{background-size:cover;display:inline-block;background-position:center;position:absolute;top:10px;left:10px;max-width:80px;max-height:80px;width:100%;height:100%}*/
+.myCard{
+  position: absolute;
+  left: 50%;
+  margin-top:5px;
+  margin-bottom: 0px;
+  margin-left: -180px;
+  width: 362px;
+  height: 500px;
+}
+
+.topicDescription {
+	text-align: center;
+}
+
+.cardTitle {
+	text-align: center;
+}
+
+.cardHeader {
+	height: 10px;
+}
+
+
+.cardFooter {
+	margin-bottom: 0px !important;
+	position: absolute;
+	border: 0px;
+}
+
+.noBorder {
+	border: 0px;
+}
+
+.loading {
+	padding:20px;
+	border-radius:5px;
+	color:black;
+	text-align:center;
+	text-overflow:ellipsis;
+	font-size:15px
+}
+
+/*////////// COLLECTIONS ////////////*/
+
+.additionalInfo {
+	font-size: 10px;
+}
+
+.beachDivider{
+	color: white;
+	font-size: 15px;
+	background-color: #F1C40F;
+}
+
+.collectionTitle{
+	font-size: 13px !important;
+}
+.collectionTopic{
+	font-size: 11px !important;
+}
+.collectionSummary{
+	font-size: 9px !important;
+}
+
+/*////////// CHAT ////////////*/
+
+.chatbuttons{
+	font-family: Open Sans;
+	color: white;
+	height: 70px;
+	padding: 0;
+	display:block;
+	border: none;
+	font-size: 20px;
+	text-align: left;
+}
+
+/*/////////  CHATROOM ////////////*/
+.discussion{list-style:none;margin:0;padding:0 0 50px}.discussion li{padding:.5rem;overflow:hidden;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.discussion .avatar{-webkit-box-flex:0;-webkit-flex:0 0 40px;-ms-flex:0 0 40px;flex:0 0 40px;position:relative}.discussion .avatar img{display:block;width:100%}.other .avatar:after{content:"";position:absolute;top:0;right:0;width:0;height:0;border:5px solid #fff;border-left-color:transparent;border-bottom-color:transparent}.self{-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-align:end;-webkit-align-items:flex-end;-ms-flex-align:end;align-items:flex-end}.self .messages{order:1;border-bottom-right-radius:0}.self .avatar{order:2}.self .avatar:after{content:"";position:absolute;bottom:0;left:0;width:0;height:0;border:5px solid #fff;border-right-color:transparent;border-top-color:transparent}.messages{background:#fff;padding:10px;border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.2)}.messages p{font-size:.8rem;margin:0 0 .2rem}.messages time{font-size:.7rem;color:#ccc}
+
+/*/////////  SETTINGS ////////////*/
+
+
+/*Feedback*/
+.feedback{
+	margin-top: 80px;
+}
+.feedbackbutton {
+	height: 70px
+}
+/*Logout*/
+.logout{
+	margin-top: 0px;
+}
+.logoutbutton {
+	height: 70px
+}
+/*Delete Account*/
+.deleteaccount{
+	margin-top: 0px;
+}
+.deleteaccountbutton {
+	height: 70px;
+}
+
+
+/*Send Feedback*/
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+form { max-width:420px; margin:10px auto; }
+
+.feedback-input {
+  color:black;
+  font-family: Open Sans;
+  font-weight:500;
+  font-size: 20px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:3px solid #387ef5 ;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-top: 5px;
+  margin-bottom: 0px;
+  width:100%;
+  height: 280px;
+  box-sizing: border-box;
+  outline:0;
+}
+
+textarea {
+  height: 220px;
+  line-height: 150%;
+  resize:none;
+}
+
+/*friends page*/
+.friends .first_name{
+	color: #000;
+	font-size: 18px;
+}
+
+.profile_pic{
+	width: 100%;
+}
+
+.friends .main-image {
+	width: 100%;
+	height: 450px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.friends .friend-container {
+	position: relative;
+}
+
+.friends .friend-no {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.friends .friend-timer {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.friends .friend-yes {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+	left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+	background-color: rgba(98, 203, 226,0.9);
+  border-radius: 50%;
+  border: 2px solid #fff;
+  line-height: 110%;
+  padding: 12px;
+  font-size: 14px;
+}
+
+
+
+
+/* Empty. Add your own CSS if you like */
+.schtable_topleft{
+  border: 1px solid #dfdfdf;
+  border-collapse: collapse;
+}
+
+.schtable_top{
+  border: 1px solid #dfdfdf;
+  border-collapse:collapse;
+  border-left:none;
+}
+
+.schtable_left{
+  border: 1px solid #dfdfdf;
+  border-collapse: collapse;
+  border-top: none;
+}
+
+.schtable{
+  border: 1px solid #dfdfdf;
+  border-collapse: collapse;
+  border-left: none;
+  border-top: none;
+}
+
+.next{
+  background: #2F72E5;
+  color: white;
+  float: right;
+}
+
+.active{
+  background: #2F72E5;
+}

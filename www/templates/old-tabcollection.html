@@ -1,0 +1,57 @@
+<ion-view view-title="Collection">
+
+
+
+  <ion-content data-ng-init="loadList()">
+
+  <!-- Loading Indicator -->
+    <div class="loading alerts"
+         ng-if="loading" >
+      <ion-spinner icon="ripple" ></ion-spinner >
+      <p >Loading saved content...</p >
+    </div >
+
+    <!-- Empty room message -->
+    <div class="alerts"
+         ng-show="!loading && savedCards.length == 0" >
+      <p >You don't have any saved card</p >
+    </div >
+
+  	 <ion-list>
+
+  	 	<ion-item class="item item-thumbnail-left item-text-wrap"
+                ng-repeat="cards in savedCards"
+                ng-click="actionButton(cards)">
+
+        <img src="{{cards.card.image}}">
+
+        <h4 class="mainfont collectionTitle">
+          {{cards.card.title}}
+          <p class="collectionTopic"> - {{cards.card.topic}}</p>
+        </h4>
+
+        <p class="mainfont collectionSummary">
+          {{cards.card.summary | limitTo: 130}}{{ cards.card.summary.length > 150 ? '&hellip;' : '' }}</p>
+
+        <div class="mainfont additionalInfo">{{cards.card.type}} - {{cards.card.additionalInfo}}
+
+        <ion-option-button class="button-positive"
+                           ng-click="share(cards)">
+          <i class="icon ion-share"></i>&nbsp; Share
+        </ion-option-button>
+
+        <ion-option-button class="button-assertive"
+                           ng-click="user.removeContent(cards)">
+          <i class="ion-ios-trash"></i>&nbsp; Delete
+        </ion-option-button>
+
+
+
+  	 	</ion-item>
+
+
+
+
+  	</ion-list>
+  </ion-content>
+</ion-view>
