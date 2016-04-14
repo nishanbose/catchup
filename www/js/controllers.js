@@ -103,7 +103,7 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
 
   $scope.yesCard = function() {
     console.log('YES');
-    $state.go('tab.chatroom');
+    $state.go('tab.chat');
     // $scope.addCard();
   };
 
