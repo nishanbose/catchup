@@ -45,7 +45,7 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
     Chats.remove(chat);
   };
 })
-.controller('FrndsCtrl', function($scope, $state) {
+.controller('FrndsCtrl', function($scope, $state, $rootScope, $timeout) {
 
   // openFB.api({
   //   path: '/me/taggable_friends',
@@ -74,7 +74,7 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
       //console.log(result.photos.data);
       //console.log(result.photos.data.length)
       for (var i = 0; i < result.photos.data.length; i++) {
-        if (result.photos.data[i].tags.data.length > 1 && result.photos.data[i].tags.data.length < 6) {
+        if (result.photos.data[i].tags.data.length > 1 && result.photos.data[i].tags.data.length < 3) {
           // if (result.photos.data[i].tags.data.length > 1) {
           console.log(result.photos.data[i]);
           console.log(result.photos.data[i].tags.data[0].name);
@@ -98,6 +98,7 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
     var newCard = items[Math.floor(Math.random() * items.length)];
     newCard.id = Math.random();
     $scope.cards.push(angular.extend({}, newCard));
+    $scope.startTimer();
   }
 
   $scope.yesCard = function() {
@@ -109,6 +110,7 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
   $scope.noCard = function() {
     console.log('NO');
     $scope.addCard();
+    //$startTimer();
   };
 
   // $scope.toggleLeft = function() {
@@ -118,7 +120,76 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
   function errorHandler(error) {
     console.log(error.message);
   };
+
+  $scope.counter = 30;
+
+  var mytimeout = null; // the current timeoutID
+
+  // actual timer method, counts down every second, stops on zero
+  $scope.onTimeout = function() {
+      if($scope.counter ===  0) {
+          $scope.$broadcast('timer-stopped', 0);
+          $timeout.cancel(mytimeout);
+          return;
+      }
+      $scope.counter--;
+      mytimeout = $timeout($scope.onTimeout, 1000);
+  };
+
+  $scope.startTimer = function() {
+      mytimeout = $timeout($scope.onTimeout, 1000);
+  };
+
+  // stops and resets the current timer
+  $scope.stopTimer = function() {
+      $scope.$broadcast('timer-stopped', $scope.counter);
+      $scope.counter = 30;
+      $timeout.cancel(mytimeout);
+  };
+
+  // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
+  $scope.$on('timer-stopped', function(event, remaining) {
+      if(remaining === 0) {
+          console.log('your time ran out!');
+      }
+  });
+
 })
+
+.controller('TimerCtrl', function($scope, $timeout, $rootScope) {
+    $scope.counter = 30;
+
+    var mytimeout = null; // the current timeoutID
+
+    // actual timer method, counts down every second, stops on zero
+    $scope.onTimeout = function() {
+        if($scope.counter ===  0) {
+            $scope.$broadcast('timer-stopped', 0);
+            $timeout.cancel(mytimeout);
+            return;
+        }
+        $scope.counter--;
+        mytimeout = $timeout($scope.onTimeout, 1000);
+    };
+
+    $scope.startTimer = function() {
+        mytimeout = $timeout($scope.onTimeout, 1000);
+    };
+
+    // stops and resets the current timer
+    $scope.stopTimer = function() {
+        $scope.$broadcast('timer-stopped', $scope.counter);
+        $scope.counter = 30;
+        $timeout.cancel(mytimeout);
+    };
+
+    // triggered, when the timer stops, you can do something here, maybe show a visual indicator or vibrate the device
+    $scope.$on('timer-stopped', function(event, remaining) {
+        if(remaining === 0) {
+            console.log('your time ran out!');
+        }
+    });
+  })
 
 .controller('topicsCtrl', function($scope, $rootScope, $state) {
   // Call a "LoadFeed" method from another controller (browseCtrl) ////

@@ -20,13 +20,18 @@
                           <div class="no-text overlayBox"><div class="noBox boxed">No</div></div> -->
               <!-- <img src="{{card.images[0].source}}"> -->
               <!-- <img src="{{card.images[0].source}}"> -->
-              <div style="background-image: url({{card.images[0].source}});" class="main-image"> </div>
+              <div style="background-image: url({{card.images[0].source}});" class="main-image" ng-click="noCard()"> </div>
             </div>
             <!-- <div class="buttondesc"> -->
               <!-- <div class="username"><i class="icon ion-android-contact"></i> {{card.tags.data[0].name}}</div> -->
               <!-- <button ng-click="noCard()" class="button button-assertive friend-no">No</button> -->
 
-              <a class="icon ion-android-time friend-timer"></a>
+              <!-- <a class="icon ion-android-time friend-timer"></a> -->
+
+              <div>
+                  {{counter}}
+                  <button ng-click='startTimer()'>Start</button> | <button ng-click='stopTimer()'>Stop</button>
+                </div>
 
               <a ng-click="noCard()" class="button button-icon icon ion-android-cancel friend-no"></a>
 
