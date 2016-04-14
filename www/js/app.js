@@ -111,11 +111,12 @@ angular.module('starter', ['ionic', 'ngCordova', 'firebase', 'angularMoment', 's
         }
       })
       .state('tab.chats', {
-      url: '/chats',
-      views: {
+        url: '/chats',
+        views: {
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
           controller: 'ChatsCtrl'
+          }
         }
       })
       .state('tab.place', {
