@@ -25,9 +25,9 @@
              ng-if="message.userId != user.current.userId" >
           <img ng-src="{{message.profilePic}}" />
         </div >
-        <div class="messages" >
+        <div class="messages" style="{{message.style}}" >
           <p >{{message.text}}</p >
-          <time >{{message.username}} • <span am-time-ago="message.timestamp" ></span ></time >
+          <time style="{{message.detail}}">{{message.username}} • <span am-time-ago="message.timestamp" ></span ></time >
         </div >
         <div class="avatar"
              ng-if="!(message.userId != user.current.userId)" >
@@ -41,6 +41,7 @@
   <!-- Send Message Footer Area -->
   <ion-footer-bar keyboard-attach
                   class="bar-positive item-input-inset" >
+    <a href="#/tab/schedule"><i class="ion-calendar" style="font-size:32px; padding-right:10px;" ></i></a>
     <label class="item-input-wrapper" >
       <input type="text"
              placeholder="Type your message"
