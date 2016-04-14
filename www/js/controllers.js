@@ -161,13 +161,13 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
 
 })
 
-.controller('chatroomCtrl', function($scope, FIREBASE_URL, userService, $firebaseArray, $firebaseObject, $localstorage, $ionicScrollDelegate) {
+.controller('chatroomCtrl', function($scope, FIREBASE_URL, userService, $firebaseArray, $firebaseObject, $localstorage, $ionicScrollDelegate, $rootScope) {
 
   $scope.chatroomName = window.localStorage.getItem("chatroomName");
   var ChatroomName = window.localStorage.getItem("chatroomName");
 
   $scope.user = userService;
-  $scope.data = {
+  $rootScope.data = {
     messages: [],
     message: '',
     loading: true,
@@ -183,23 +183,23 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
 
 
   $scope.loadMessages = function() {
-    $scope.data.messages = $firebaseArray(Content);
-    $scope.data.messages.$loaded().then(function(data) {
-      $scope.data.loading = false;
+    $rootScope.data.messages = $firebaseArray(Content);
+    $rootScope.data.messages.$loaded().then(function(data) {
+      $rootScope.data.loading = false;
       $ionicScrollDelegate.$getByHandle('chatroom').scrollBottom(true);
     });
   };
 
   $scope.sendMessage = function() {
-    if ($scope.data.message) {
-      $scope.data.messages.$add({
-        text: $scope.data.message,
+    if ($rootScope.data.message) {
+      $rootScope.data.messages.$add({
+        text: $rootScope.data.message,
         username: userInfo.name,
         userId: userInfo.userId,
         profilePic: userInfo.profilePic,
         //timestamp: new Date().getTime
       });
-      $scope.data.message = '';
+      $rootScope.data.message = '';
       $ionicScrollDelegate.$getByHandle('chatroom').scrollBottom(true);
     }
   };
@@ -283,34 +283,45 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
       $scope.items.push($scope.location);
       $scope.selected_items.push($scope.location.name);
     }
+    // $scope.sendInvitation = function(){
+    //
+    //   var d = new Date();
+    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+    //
+    //   $rootScope.messages.push({
+    //     userId: '12345',
+    //     text: 'Here\'s my invitation',
+    //     time: d
+    //   });
+    //   $rootScope.messages.push({
+    //     userId: '12345',
+    //     text: 'When: Monday 2PM~3PM',
+    //     time: d
+    //   });
+    //   $rootScope.messages.push({
+    //     userId: '12345',
+    //     text: 'Where: 105 S State St or Comet Coffee',
+    //     time: d
+    //   });
+    //   $rootScope.messages.push({
+    //     userId: '12345',
+    //     text: 'Tab here to confirm',
+    //     time: d
+    //   });
+    //
+    //   delete $rootScope.data.message;
+    // }
     $scope.sendInvitation = function(){
-
-      var d = new Date();
-      d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-      $rootScope.messages.push({
-        userId: '12345',
-        text: 'Here\'s my invitation',
-        time: d
+      $rootScope.data.messages.$add({
+        text: 'This is the invitation',
+        style: 'width:75%; background-color:#62CBE2; color:white; font-weight:bold; text-align: center; font-size: 32px;',
+        username: 'April 27(Mon) 2PM at Comet Coffee',
+        detail: 'color:white; text-align: center;'
+        //timestamp: new Date().getTime
       });
-      $rootScope.messages.push({
-        userId: '12345',
-        text: 'When: Monday 2PM~3PM',
-        time: d
-      });
-      $rootScope.messages.push({
-        userId: '12345',
-        text: 'Where: 105 S State St or Comet Coffee',
-        time: d
-      });
-      $rootScope.messages.push({
-        userId: '12345',
-        text: 'Tab here to confirm',
-        time: d
-      });
-
-      delete $rootScope.data.message;
+      $rootScope.data.message = '';
     }
+
   })
 
   .controller('ScheduleCtrl', function($scope) {
@@ -375,214 +386,215 @@ angular.module('starter.controllers', ['starter.services']).controller('IntroCtr
 
   //
   // .controller('Messages', ['$scope', '$timeout', '$ionicScrollDelegate', function($scope, ionicDatePicker) {
-  .controller('Messages', function($scope, $timeout, $ionicScrollDelegate, $rootScope) {
-    $scope.chatorder = 0;
-    $scope.hideTime = true;
-
-    var alternate,
-      isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
-
-    var counter = 0;
-
-    $scope.sendMessage = function() {
-      alternate = !alternate;
-
-      var d = new Date();
-      d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-      $rootScope.messages.push({
-        userId: alternate ? '12345' : '54321',
-        text: $rootScope.data.message,
-        time: d
-      });
-
-      delete $rootScope.data.message;
-      $scope.chatorder += 1;
-
-      if($scope.chatorder==3){
-        $timeout(function(){
-          var d = new Date();
-          d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-          $rootScope.messages.push({
-            userId: '54321',
-            text: 'Yeah, definitely. Send me an invitation.',
-            time: d
-          });
-        }, 1000);
-        alternate = !alternate;
-        $scope.chatorder += 1;
-      }
-
-      if($scope.chatorder==1){
-        $timeout(function(){
-          var d = new Date();
-          d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-          $rootScope.messages.push({
-            userId: '54321',
-            text: 'Hey, How are you?',
-            time: d
-          });
-        }, 1000);
-        alternate = !alternate;
-        $scope.chatorder += 1;
-      }
-
-
-
-    //   setTimeout(function(){
-    //     alternate = !alternate;
-    //
-    //     var d = new Date();
-    //     d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //     $scope.messages.push({
-    //       userId: alternate ? '12345' : '54321',
-    //       text: 'Hey! How are you?',
-    //       time: d
-    //     });
-    //
-    //     delete $scope.data.message;
-    //   }, 4000);
-    //   setTimeout(function(){
-    //     alternate = !alternate;
-    //
-    //     var d = new Date();
-    //     d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //     $scope.messages.push({
-    //       userId: alternate ? '12345' : '54321',
-    //       text: 'Hey! We should go for coffee',
-    //       time: d
-    //     });
-    //
-    //     delete $scope.data.message;
-    //   }, 4000);
-    //
-    // setTimeout(function(){
-    //   alternate = !alternate;
-    //
-    //   var d = new Date();
-    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //   $scope.messages.push({
-    //     userId: alternate ? '12345' : '54321',
-    //     text: 'Yeah! Send me an invitation',
-    //     time: d
-    //   });
-    //
-    //   delete $scope.data.message;
-    // }, 4000);
-    // setTimeout(function(){
-    //   alternate = !alternate;
-    //
-    //   var d = new Date();
-    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //   $scope.messages.push({
-    //     userId: alternate ? '12345' : '54321',
-    //     text: 'Invitation sent',
-    //     time: d
-    //   });
-    //
-    //   delete $scope.data.message;
-    // }, 4000);
-    };
-    // $rootScope.sendMessage2 = function() {
-    //   alternate = !alternate;
-    //
-    //   var d = new Date();
-    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //   $scope.messages.push({
-    //     userId: alternate ? '12345' : '54321',
-    //     text: 'Invitation Sent',
-    //     time: d
-    //   });
-    //
-    //   delete $scope.data.message;
-    // };
-    // $scope.sendMessage2 = function(){
-    //   alternate = !alternate;
-    //
-    //   var d = new Date();
-    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //   $scope.messages.push({
-    //     userId: alternate ? '12345' : '54321',
-    //     text: 'Invitation Sent.',
-    //     time: d
-    //   });
-    //
-    //   delete $scope.data.message;
-    //   $ionicScrollDelegate.scrollBottom(true);
-    // };
-    // if(ChatSchedule == 1){
-    //   alternate = !alternate;
-    //
-    //   var d = new Date();
-    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //   $scope.messages.push({
-    //     userId: alternate ? '12345' : '54321',
-    //     text: 'Invitation Sent',
-    //     time: d
-    //   });
-    //
-    //   delete $scope.data.message;
-    //   $ionicScrollDelegate.scrollBottom(true);
-    // }
-
-    $scope.inputUp = function() {
-      //if (isIOS) $scope.data.keyboardHeight = 216;
-      $timeout(function() {
-        $ionicScrollDelegate.scrollBottom(true);
-      }, 300);
-
-    };
-
-    $scope.inputDown = function() {
-      //if (isIOS) $scope.data.keyboardHeight = 0;
-      $ionicScrollDelegate.resize();
-    };
-
-    $scope.closeKeyboard = function() {
-      //cordova.plugins.Keyboard.close();
-    };
-
-    $scope.confirmInvitation = function() {
-      var d = new Date();
-      d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-      $rootScope.messages.push({
-        userId: '54321',
-        text: 'Invitation Confrimed',
-        time: d
-      });
-    };
-
-    // $timeout(function() {
-    //   alternate = !alternate;
-    //
-    //   var d = new Date();
-    //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-    //
-    //   $scope.messages.push({
-    //     userId: alternate ? '12345' : '54321',
-    //     text: 'Invitation Sent',
-    //     time: d
-    //   });
-    //
-    //   delete $scope.data.message;
-    // }, 20000);
-
-
-    $rootScope.data = {};
-    $rootScope.myId = '54321';
-    $rootScope.messages = [];
-
-
-
-
-  });
+  // .controller('Messages', function($scope, $timeout, $ionicScrollDelegate, $rootScope) {
+  //   $scope.chatorder = 0;
+  //   $scope.hideTime = true;
+  //
+  //   var alternate,
+  //     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
+  //
+  //   var counter = 0;
+  //
+  //   $scope.sendMessage = function() {
+  //     alternate = !alternate;
+  //
+  //     var d = new Date();
+  //     d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //
+  //     $rootScope.messages.push({
+  //       userId: alternate ? '12345' : '54321',
+  //       text: $rootScope.data.message,
+  //       time: d
+  //     });
+  //
+  //     delete $rootScope.data.message;
+  //     $scope.chatorder += 1;
+  //
+  //     if($scope.chatorder==3){
+  //       $timeout(function(){
+  //         var d = new Date();
+  //         d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //
+  //         $rootScope.messages.push({
+  //           userId: '54321',
+  //           text: 'Yeah, definitely. Send me an invitation.',
+  //           time: d
+  //         });
+  //       }, 1000);
+  //       alternate = !alternate;
+  //       $scope.chatorder += 1;
+  //     }
+  //
+  //     if($scope.chatorder==1){
+  //       $timeout(function(){
+  //         var d = new Date();
+  //         d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //
+  //         $rootScope.messages.push({
+  //           userId: '54321',
+  //           text: 'Hey, How are you?',
+  //           time: d
+  //         });
+  //       }, 1000);
+  //       alternate = !alternate;
+  //       $scope.chatorder += 1;
+  //     }
+  //
+  //
+  //
+  //   //   setTimeout(function(){
+  //   //     alternate = !alternate;
+  //   //
+  //   //     var d = new Date();
+  //   //     d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //     $scope.messages.push({
+  //   //       userId: alternate ? '12345' : '54321',
+  //   //       text: 'Hey! How are you?',
+  //   //       time: d
+  //   //     });
+  //   //
+  //   //     delete $scope.data.message;
+  //   //   }, 4000);
+  //   //   setTimeout(function(){
+  //   //     alternate = !alternate;
+  //   //
+  //   //     var d = new Date();
+  //   //     d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //     $scope.messages.push({
+  //   //       userId: alternate ? '12345' : '54321',
+  //   //       text: 'Hey! We should go for coffee',
+  //   //       time: d
+  //   //     });
+  //   //
+  //   //     delete $scope.data.message;
+  //   //   }, 4000);
+  //   //
+  //   // setTimeout(function(){
+  //   //   alternate = !alternate;
+  //   //
+  //   //   var d = new Date();
+  //   //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //   $scope.messages.push({
+  //   //     userId: alternate ? '12345' : '54321',
+  //   //     text: 'Yeah! Send me an invitation',
+  //   //     time: d
+  //   //   });
+  //   //
+  //   //   delete $scope.data.message;
+  //   // }, 4000);
+  //   // setTimeout(function(){
+  //   //   alternate = !alternate;
+  //   //
+  //   //   var d = new Date();
+  //   //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //   $scope.messages.push({
+  //   //     userId: alternate ? '12345' : '54321',
+  //   //     text: 'Invitation sent',
+  //   //     time: d
+  //   //   });
+  //   //
+  //   //   delete $scope.data.message;
+  //   // }, 4000);
+  //   };
+  //   // $rootScope.sendMessage2 = function() {
+  //   //   alternate = !alternate;
+  //   //
+  //   //   var d = new Date();
+  //   //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //   $scope.messages.push({
+  //   //     userId: alternate ? '12345' : '54321',
+  //   //     text: 'Invitation Sent',
+  //   //     time: d
+  //   //   });
+  //   //
+  //   //   delete $scope.data.message;
+  //   // };
+  //   // $scope.sendMessage2 = function(){
+  //   //   alternate = !alternate;
+  //   //
+  //   //   var d = new Date();
+  //   //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //   $scope.messages.push({
+  //   //     userId: alternate ? '12345' : '54321',
+  //   //     text: 'Invitation Sent.',
+  //   //     time: d
+  //   //   });
+  //   //
+  //   //   delete $scope.data.message;
+  //   //   $ionicScrollDelegate.scrollBottom(true);
+  //   // };
+  //   // if(ChatSchedule == 1){
+  //   //   alternate = !alternate;
+  //   //
+  //   //   var d = new Date();
+  //   //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //   $scope.messages.push({
+  //   //     userId: alternate ? '12345' : '54321',
+  //   //     text: 'Invitation Sent',
+  //   //     time: d
+  //   //   });
+  //   //
+  //   //   delete $scope.data.message;
+  //   //   $ionicScrollDelegate.scrollBottom(true);
+  //   // }
+  //
+  //   $scope.inputUp = function() {
+  //     //if (isIOS) $scope.data.keyboardHeight = 216;
+  //     $timeout(function() {
+  //       $ionicScrollDelegate.scrollBottom(true);
+  //     }, 300);
+  //
+  //   };
+  //
+  //   $scope.inputDown = function() {
+  //     //if (isIOS) $scope.data.keyboardHeight = 0;
+  //     $ionicScrollDelegate.resize();
+  //   };
+  //
+  //   $scope.closeKeyboard = function() {
+  //     //cordova.plugins.Keyboard.close();
+  //   };
+  //
+  //   $scope.confirmInvitation = function() {
+  //     var d = new Date();
+  //     d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //
+  //     $rootScope.messages.push({
+  //       userId: '54321',
+  //       text: 'Invitation Confrimed',
+  //       time: d
+  //     });
+  //   };
+  //
+  //   // $timeout(function() {
+  //   //   alternate = !alternate;
+  //   //
+  //   //   var d = new Date();
+  //   //   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+  //   //
+  //   //   $scope.messages.push({
+  //   //     userId: alternate ? '12345' : '54321',
+  //   //     text: 'Invitation Sent',
+  //   //     time: d
+  //   //   });
+  //   //
+  //   //   delete $scope.data.message;
+  //   // }, 20000);
+  //
+  //
+  //   $rootScope.data = {};
+  //   $rootScope.myId = '54321';
+  //   $rootScope.messages = [];
+  //
+  //
+  //
+  //
+  // })
+  ;

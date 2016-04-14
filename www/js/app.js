@@ -102,9 +102,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'firebase', 'angularMoment', 's
         }
       })
       .state('tab.schedule', {
-        url: '/chatting/schedule',
+        url: '/schedule',
         views: {
-          'tab-chatting': {
+          'tab-chat': {
             templateUrl: 'templates/schedule.html',
             controller: 'ScheduleCtrl'
           }
@@ -120,9 +120,9 @@ angular.module('starter', ['ionic', 'ngCordova', 'firebase', 'angularMoment', 's
         }
       })
       .state('tab.place', {
-        url: '/chatting/schedule/place',
+        url: '/place',
         views: {
-          'tab-chatting': {
+          'tab-chat': {
             templateUrl: 'templates/place.html',
             controller: 'PlaceCtrl'
           }
