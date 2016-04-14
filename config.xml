@@ -67,7 +67,7 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
-    <plugin name="cordova-plugin-facebook4" spec="~1.6.3">
+    <plugin name="cordova-plugin-facebook4" spec="~1.6.5">
         <variable name="APP_ID" value="951495458299144" />
         <variable name="APP_NAME" value="buddywap" />
     </plugin>
