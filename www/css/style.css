@@ -310,10 +310,11 @@ textarea {
 
 .friends .main-image {
 	width: 100%;
-	height: 450px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
+height: 600px;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+margin-top: 20px;
 }
 
 .friends .friend-container {
